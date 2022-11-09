@@ -1,4 +1,4 @@
-name: Markdown Validator
+name: TenantConfig Validator
 on:
   workflow_call:
   # Triggers the workflow on push or pull request events but only for the dev , stage and main branch
@@ -8,7 +8,7 @@ on:
     branches: [ develop,stage,main ]
 
 jobs:
-  MD-Validator-Action:
+  Tenant-Config-Action:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -45,7 +45,7 @@ jobs:
         run: |
          pwd
          ls -la
-      - name: Running MarkDown Validator.....
+      - name: Running Tenant Config Validator.....
         run: |
           pwd
           cd ${{ github.workspace }}/tools/scripts
@@ -57,7 +57,7 @@ jobs:
           npm install
           echo " Repo: ${{ github.repository }}"
           echo " Space: ${{ github.workspace }}"
-          result=$(npm run markdown ${{github.workspace }})
+          result=$(npm run configcheck ${{github.workspace }})
           echo "**********TEST RESULTS*********************"
           echo "$result"
           pwd

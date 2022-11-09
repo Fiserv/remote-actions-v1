@@ -1,4 +1,4 @@
-name: API Specs Validator Action
+name: API Specs Validator
 on:
   workflow_call:
   # Triggers the workflow on push or pull request events but only for the dev , stage and main branch
@@ -8,12 +8,12 @@ on:
     branches: [ develop,stage,main ]
 
 jobs:
-  Explore-GitHub-Actions:
+  API-Validator-Actions:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}." 
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and ${GITHUB_REF##*/} and ${GITHUB_REF#refs/heads/} and your repository is ${{ github.repository }}." 
       - name: Creating new temp sub dir called `tools`
         run: |
          mkdir -m 777 tools
