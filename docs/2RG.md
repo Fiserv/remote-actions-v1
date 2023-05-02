@@ -13,7 +13,7 @@ titles: additionalDataCommon, JSON Example
 title: additionalDataCommon
 -->
 
-The below table identifies the parameters in the `additionalDataCommon` object.
+The below table identifies the parameters in the `additionalDataCommon` object Test.
 
 | Variable | Type | Maximum Length | Description |
 | -------- | -- | ------------ | ------------------ |
