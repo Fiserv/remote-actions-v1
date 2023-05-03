@@ -1,5 +1,5 @@
 {
-  "name": "remote-actions",
+  "name": "remote-actions-v1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,9 @@
     "validate": "node validator-yaml.js $path",
     "markdown": "node md-validator.js $path",
     "configcheck": "node config-validator.js $path",
-    "test": "node download-api-zip.js reference"
+    "test": "node download-api-zip.js reference",
+    "lint": "eslint --ext .jsx --ext .js --max-warnings=0 \"scripts/*.js/\"",
+    "lint:fix": "eslint  --fix"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +23,16 @@
     "js-yaml": "^4.1.0",
     "markdown-it": "^13.0.1",
     "markdownlint": "^0.25.1",
+    "openapi-to-postmanv2": "^4.11.0",
     "showdown": "^2.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
