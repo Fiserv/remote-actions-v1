@@ -6,7 +6,7 @@ const SwaggerParser = require('@apidevtools/swagger-parser');
 const args = process.argv.slice(2); 
 const folder = args?.[0]+"/reference"; 
 
-const {errorMessage  , printMessage} = require('./utils/tools')
+const {errorMsg,errorMessage  , printMessage} = require('./utils/tools')
 
 /* VALIDATION RULES
    -  `YAML` Extension check 
@@ -58,7 +58,8 @@ const validateDir = async (dir) => {
                 }
             }
         } catch (e) {
-          errorMessage('YAML VALIDATOR'  ,e.message);
+          errorMessage('YAML VALIDATOR'  ,`File : ${file.name} : FAILED`);
+          errorMsg(`Error: ${e.message}`);
         }
       }else{
         errorMessage('YAML VALIDATOR'  ,`Not a YAML Spec file : ${file.name}`);
