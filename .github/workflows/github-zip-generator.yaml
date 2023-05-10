@@ -86,7 +86,7 @@ jobs:
       - name: Pushing tenant zip files remotely
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.API_KEY_GITHUB }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_ACTION }}
         with:
           source_file: '${{github.workspace}}/assets/remote-actions-v1_postman.zip'
           destination_repo: 'Fiserv/tenants-data'
