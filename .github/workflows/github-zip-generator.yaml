@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref.split(refs/heads/)[1] }} and your repository is ${{ github.repository }}." 
+      - run: echo "🔎 The name of your branch is ${{ github.ref_name }} and your repository is ${{ github.repository }}." 
       - name: Creating new temp sub dir called `tools`
         run: |
          mkdir -m 777 tools
@@ -91,7 +91,7 @@ jobs:
           source_file: '${{github.workspace}}/assets/remote-actions-v1_postman.zip'
           destination_repo: 'Fiserv/tenants-data'
           destination_folder: 'assets'
-          destination_branch: '${{ github.ref.split(refs/heads/)[1] }}'
+          destination_branch: '${{ github.ref_name }}'
           user_email: 'abhishek.singh3@fiserv.com'
           user_name: 'asingh2023'
           commit_message: 'pushing zip file remotely'       
