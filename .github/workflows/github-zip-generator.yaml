@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref_name }} and your repository is ${{ github.repository }}." 
+      - run: echo "🔎 The name of your branch is ${{ github.ref_name }} and your repository is ${{ github.event.repository.name }}." 
       - name: Creating new temp sub dir called `tools`
         run: |
          mkdir -m 777 tools
@@ -82,7 +82,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_ACTION }}
         with:
-          source_file: '${{github.workspace}}/assets/remote-actions-v1_postman.zip'
+          source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
           destination_repo: 'Fiserv/tenants-data'
           destination_folder: 'assets'
           destination_branch: '${{ github.ref_name }}'
@@ -94,7 +94,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_ACTION }}
         with:
-          source_file: '${{github.workspace}}/assets/remote-actions-v1_spec.zip'
+          source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_spec.zip'
           destination_repo: 'Fiserv/tenants-data'
           destination_folder: 'assets'
           destination_branch: '${{ github.ref_name }}'
