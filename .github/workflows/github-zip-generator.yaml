@@ -98,9 +98,9 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
         with:
           source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_spec.zip'
-          destination_repo: 'Fiserv/tenants-data'
+          destination_repo: 'Fiserv/${{ github.event.repository.name }}'
           destination_folder: 'assets'
-          destination_branch: '${{ github.ref_name }}'
+          destination_branch: 'collection'
           user_email: 'abhishek.singh3@fiserv.com'
           user_name: 'asingh2023'
           commit_message: 'pushing zip file remotely'                 
