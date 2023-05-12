@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref_name }} and your repository is ${{ github.event.repository.name }}." 
+      - run: echo "🔎 The name of your branch is ${{ github.ref_name }} and your repository is ${{ github.event.repository.name }}."       
       - name: Creating new temp sub dir called `tools`
         run: |
          mkdir -m 777 tools
@@ -80,6 +80,7 @@ jobs:
       - name: Pushing tenant postmant collection zip file remotely into teanants-data repository.
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
+          ACTIONS_STEP_DEBUG: true
           API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}       
         with:
           source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
@@ -89,17 +90,18 @@ jobs:
           user_email: 'abhishek.singh3@fiserv.com'
           user_name: 'asingh2023'
           commit_message: 'pushing zip file remotely' 
-      - name: Pushing tenant api spec zip file remotely into teanants-data repository.
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
-        with:
-          source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_spec.zip'
-          destination_repo: 'Fiserv/tenants-data'
-          destination_folder: 'assets'
-          destination_branch: '${{ github.ref_name }}'
-          user_email: 'abhishek.singh3@fiserv.com'
-          user_name: 'asingh2023'
-          commit_message: 'pushing zip file remotely'                 
+          
+      # - name: Pushing tenant api spec zip file remotely into teanants-data repository.
+      #   uses: dmnemec/copy_file_to_another_repo_action@main
+      #   env:
+      #     API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
+      #   with:
+      #     source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_spec.zip'
+      #     destination_repo: 'Fiserv/tenants-data'
+      #     destination_folder: 'assets'
+      #     destination_branch: '${{ github.ref_name }}'
+      #     user_email: 'abhishek.singh3@fiserv.com'
+      #     user_name: 'asingh2023'
+      #     commit_message: 'pushing zip file remotely'                 
 
         
