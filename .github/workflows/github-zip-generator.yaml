@@ -92,17 +92,17 @@ jobs:
           user_name: 'asingh2023'
           commit_message: 'pushing zip file remotely'
           
-      # - name: Pushing tenant api spec zip file remotely into teanants-data repository.
-      #   uses: dmnemec/copy_file_to_another_repo_action@main
-      #   env:
-      #     API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
-      #   with:
-      #     source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_spec.zip'
-      #     destination_repo: 'Fiserv/tenants-data'
-      #     destination_folder: 'assets'
-      #     destination_branch: '${{ github.ref_name }}'
-      #     user_email: 'abhishek.singh3@fiserv.com'
-      #     user_name: 'asingh2023'
-      #     commit_message: 'pushing zip file remotely'                 
+      - name: Pushing tenant api spec zip file remotely into teanants-data repository.
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
+        with:
+          source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_spec.zip'
+          destination_repo: 'Fiserv/tenants-data'
+          destination_folder: 'assets'
+          destination_branch: '${{ github.ref_name }}'
+          user_email: 'abhishek.singh3@fiserv.com'
+          user_name: 'asingh2023'
+          commit_message: 'pushing zip file remotely'                 
 
         
