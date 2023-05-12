@@ -95,7 +95,7 @@ jobs:
       - name: Commited changes from action runner to remote branch
         uses: stefanzweifel/git-auto-commit-action@v4   
         with: 
-          commit_message: Automated Change 
+          commit_message: Automatically commit changes
           branch: collection            
 
         
