@@ -79,9 +79,8 @@ jobs:
           ls -la
       - name: Pushing tenant postmant collection zip file remotely into teanants-data repository.
         uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          ACTIONS_STEP_DEBUG: true
-          API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}       
+        env: 
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}       
         with:
           source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
           destination_repo: 'Fiserv/tenants-data'
