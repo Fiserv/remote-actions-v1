@@ -13,17 +13,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Copy
-      uses: andstor/copycat-action@v3
+    - name: Pushing tenant postmant collection zip file remotely into teanants-data repository.
+      uses: nkoppel/push-files-to-another-repository@1.1.1
+      env:
+         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}     
       with:
-        personal_token: ${{ secrets.API_TOKEN_GITHUB }}
-        src_path: '${{github.workspace}}/docs/2RG.md'
-        src_branch: '${{ github.ref_name }}'
-        dst_path: assets
-        dst_owner: Fiserv
-        dst_repo_name: tenants-data
-        dst_branch: '${{ github.ref_name }}'
-        email: 'abhishek.singh3@fiserv.com'
-        username: 'asingh2023'
-        commit_message: 'pushing zip file remotely'         
-       
+        source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
+        destination-username: 'Fiserv'
+        destination-repository: 'tenants-data'
+        destination-directory: 'assets'
+        destination-branch: '${{ github.ref_name }}'
+        commit-email: 'abhishek.singh3@fiserv.com'
+        commit-username: 'asingh2023'
+        commit_message: 'pushing zip file remotely'
