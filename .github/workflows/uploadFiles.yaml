@@ -21,7 +21,7 @@ jobs:
       - name: Checkout destination repository
         uses: actions/checkout@v2
         with:
-          repository: 'tenants-data'
+          repository: 'Fiserv/tenants-data'
           ref: develop
       - name: Download files from source repository
         uses: actions/download-artifact@v2
