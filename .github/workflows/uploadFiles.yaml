@@ -27,7 +27,7 @@ jobs:
           git commit -m "Copy files from source repository"
           git push
         env:
-          SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}
+          SECRET_KEY: ${{ secrets.API_KEY_GITHUB }}
 # jobs:
 #   copy-files:
 #     runs-on: ubuntu-latest
