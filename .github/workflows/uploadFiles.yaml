@@ -19,7 +19,7 @@ jobs:
       - name: Copy files to destination repository
         run: |
           git clone https://github.com/Fiserv/tenants-data.git
-          cp -r ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets
+          cp -r ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets/
           cd Fiserv/tenants-data
           git config --global user.email "abhishek.singh3@fiserv.com"
           git config --global user.name "asingh2023"
