@@ -35,7 +35,7 @@ jobs:
           git config --global user.email "abhishek.singh3@fiserv.com"
           git config --global user.name "asingh2023"
           git add .
-          git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
+          git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
           git push origin --set-upstream develop
         env:
           SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}          
