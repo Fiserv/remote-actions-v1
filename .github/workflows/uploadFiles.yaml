@@ -4,6 +4,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}  
+
 jobs:
   copy-files:
     runs-on: ubuntu-latest
@@ -34,3 +37,5 @@ jobs:
           git add .
           git commit -m "Copy files from source repository"
           git push
+        env:
+          SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}          
