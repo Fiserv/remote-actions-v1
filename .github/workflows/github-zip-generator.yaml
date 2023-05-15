@@ -84,7 +84,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
         with:
-          source_file: '${{github.workspace}}/docs/2RG.md'
+          source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
           destination_repo: 'Fiserv/tenants-data'
           destination_folder: 'assets'
           destination_branch: '${{ github.ref_name }}'        
