@@ -1,6 +1,6 @@
 {
   "title": "Developer Studio",
-  "name": "DeveloperStudio",
+  "name": "RemoteAction",
   "brand": "Fiserv",
   "brandLogoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Fiserv_Logo.jpg",
   "solution": [
@@ -46,12 +46,12 @@
     "logoURL": "https://raw.githubusercontent.com/Fiserv/Developer-Portal-Tenant-API/develop/assets/images/Portal_Logo.png",
     "description": "To onboard properly into the Developer Studio as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
     "longDescription": "To onboard properly into the Developer Studi as a new tenant each product must support these APIs so that we can retrieve product specific API specifications and documentation.",
-    "apiSpecification": "/v1/apis",
-    "layout": "/v1/layouts",
-    "documentation": "/v1/docs",
-    "documenttree": "/v1/docs",
-    "documenttreeV2": "/v2/docs",
-    "sandbox": "/v1/sandboxrun",
+    "apiSpecification": "/v1/apis/RemoteAction",
+    "layout": "/v1/layouts/RemoteAction",
+    "documentation": "/v1/docs/RemoteAction",
+    "documenttree": "/v1/docs/RemoteAction",
+    "documenttreeV2": "/v2/docs/RemoteAction",
+    "sandbox": "/v1/sandboxrun/RemoteAction",
     "feature": [
       {
         "name": "sandBox",
