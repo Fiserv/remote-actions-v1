@@ -1,4 +1,4 @@
-name: Copy Files
+name: Copy Test Files
 
 on:
   # Allows you to run this workflow manually from the Actions tab
@@ -35,7 +35,6 @@ jobs:
           git config --global user.email "abhishek.singh3@fiserv.com"
           git config --global user.name "asingh2023"
           git add .
-# don't commit if no changes were made
           git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
           git push origin --set-upstream develop
         env:
