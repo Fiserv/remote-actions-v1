@@ -35,7 +35,8 @@ jobs:
           git config --global user.email "abhishek.singh3@fiserv.com"
           git config --global user.name "asingh2023"
           git add .
-          git commit -m "Copy files from source repository"
-          git push
+# don't commit if no changes were made
+          git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
+          git push origin --set-upstream develop
         env:
           SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}          
