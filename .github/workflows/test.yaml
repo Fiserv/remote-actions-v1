@@ -6,13 +6,6 @@ on:
   workflow_call:
   # Triggers the workflow on push or pull request events but only for the dev, stage and main branch
 
-name: Copy File
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   copy-file:
     runs-on: ubuntu-latest
