@@ -26,7 +26,7 @@
       "releaseNotesPath": "/release-notes/release-notes-11.0.0.md",
       "apiSpecFileNames": [
         "Accountholder/AddrService",
-        "Accountholder/PartyService",
+        "Accountholder/PartyService1",
         "Accountholder/PartyAcctRelService",
         "Accountholder/PartyPartyRelService",
         "Accountholder/ClientDefinedFieldService",
@@ -39,6 +39,12 @@
         "Payments/DebitService",
         "Payments/TransferService"
       ]
+    },
+    {
+      "version": "1.0.0",
+      "versionType": "minor",
+      "releaseNotesPath": "docs/Release-Notes-Alerts/Release-Notes.md",
+      "apiSpecFileNames": ["api-1.0.1"]
     }
   ],
   "product": {
