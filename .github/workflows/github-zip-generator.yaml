@@ -103,10 +103,12 @@ jobs:
           path: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
 
       - name: Checkout destination repository
+        env:
+          SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}      
         uses: actions/checkout@v3
         with:
           repository: 'Fiserv/tenants-data'
-          token: ${{ secrets.ZIP_GENERATOR_ACTION }}          
+          token: ${{ secrets.SECRET_KEY }}          
           ref: ${{ github.ref_name }}
 
       - name: Download files from source repository
