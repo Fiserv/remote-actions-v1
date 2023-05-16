@@ -25,8 +25,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'Fiserv/tenants-data'
-          token: ${{ secrets.ZIP_GENERATOR_ACTION }}          
+          token: ${{ secrets.SECRET_KEY }}          
           ref: 'develop'
+        env:
+          SECRET_KEY: ${{ secrets.ACTION_SECRET }}
 
       - name: Download files from source repository
         uses: actions/download-artifact@v2
