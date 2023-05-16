@@ -41,5 +41,7 @@ jobs:
           cd ./Fiserv/tenants-data
           git add .
           git commit -m "Copy zip file from ${{ github.event.repository.name }} to Fiserv/tenants-data"
-          git push
+          git push -u ${{ secrets.SECRET_KEY }}
+        env:
+          SECRET_KEY: ${{ secrets.ACTION_SECRET }}           
  
