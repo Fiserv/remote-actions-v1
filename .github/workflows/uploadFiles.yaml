@@ -42,7 +42,7 @@ jobs:
         run: |
           git config --global user.email "abhishek.singh3@fiserv.com"
           git config --global user.name "asingh2023"
-          git add .
+          git add ${{ github.event.repository.name }}_postman.zip
           git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
           git push -u ${{ secrets.SECRET_KEY }}
         env:
