@@ -12,8 +12,6 @@ on:
 jobs:
   ZIP-Generator-Actions:
     runs-on: ubuntu-latest
-    env:
-      SECRET_KEY: ${{ secrets.ACTION_SECRET }}    
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -79,8 +77,6 @@ jobs:
         run: |
           pwd
           ls -la
-
-
       # - name: Pushing tenant doc file remotely into teanants-data repository.
       #   uses: dmnemec/copy_file_to_another_repo_action@main
       #   env:
@@ -107,12 +103,10 @@ jobs:
           path: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
 
       - name: Checkout destination repository
-        env:
-          SECRET_KEY: ${{ secrets.ACTION_SECRET }}
         uses: actions/checkout@v3
         with:
           repository: 'Fiserv/tenants-data'
-          token: ${{ secrets.SECRET_KEY }}          
+          token: ${{ secrets.ZIP_GENERATOR_ACTION }}          
           ref: ${{ github.ref_name }}
 
       - name: Download files from source repository
@@ -128,4 +122,4 @@ jobs:
           git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
           git push -u ${{ secrets.SECRET_KEY }}
         env:
-          SECRET_KEY: ${{ secrets.ACTION_SECRET }}   
+          SECRET_KEY: ${{ secrets.ACTION_SECRET }}
