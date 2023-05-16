@@ -63,7 +63,7 @@ jobs:
           echo "step3"    
           git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
           echo "step4" 
-          git push -u ${{ secrets.ZIP_GENERATOR_ACTION }}
+          git push -u ${{ secrets.SECRET_KEY }}
           echo "step5" 
         env:
-          SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}          
+          SECRET_KEY: ${{ secrets.ACTION_SECRET }}          
