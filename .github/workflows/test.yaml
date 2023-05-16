@@ -6,31 +6,47 @@ on:
   workflow_call:
   # Triggers the workflow on push or pull request events but only for the dev, stage and main branch
 
+name: Copy File
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   copy-file:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout destination repo
+      - name: Checkout source repository
+        uses: actions/checkout@v2
+        with:
+          repository: Fiserv/remote-actions-v1
+          ref: develop
+
+      - name: Upload file as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: file-to-copy
+          path: ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip
+          
+      - name: Checkout target repository
         uses: actions/checkout@v2
         with:
           repository: Fiserv/tenants-data
           ref: develop
-          path: assets
 
-      - name: Copy file to destination repo
-        run: |
-          cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets
-        shell: bash
-
-      - name: Commit and push changes
-        uses: EndBug/add-and-commit@v7
+      - name: Download artifact
+        uses: actions/download-artifact@v2
         with:
-          author_name: Abhishek Singh
-          author_email: abhishek.singh3@fiserv.com
-          message: 'Copy file to destination repo'
-          path: Fiserv/tenants-data
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_SECRET }}
+          name: file-to-copy
+          path: ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip
+
+      - name: Upload file to target folder
+        uses: actions/upload-file@v2
+        with:
+          repository: Fiserv/tenants-data
+          path: path/to/download/file
+          target-path: Fiserv/tenants-data/assets
 # jobs:
 #   copy-file:
 #     runs-on: ubuntu-latest

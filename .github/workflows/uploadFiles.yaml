@@ -15,7 +15,7 @@ jobs:
           repository: 'Fiserv/remote-actions-v1'
           ref: 'develop'
 
-      - name: Copy files to destination repository
+      - name: Upload file as artifact
         uses: actions/upload-artifact@v2
         with:
           name: files
@@ -32,11 +32,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: files
-
-      # - name: Move files to specific folder in destination repository
-      #   run: | 
-      #     mv ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets/
-      #   working-directory: Fiserv/tenants-data
 
       - name: Commit changes
         run: |
