@@ -56,9 +56,14 @@ jobs:
       - name: Commit changes
         run: |
           git config --global user.email "abhishek.singh3@fiserv.com"
+          echo "config"
           git config --global user.name "asingh2023"
+          echo "step2"  
           git add .
+          echo "step3"    
           git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
-          git push origin --set-upstream develop -u ${{ secrets.ZIP_GENERATOR_ACTION }}
+          echo "step4" 
+          git push -u ${{ secrets.ZIP_GENERATOR_ACTION }}
+          echo "step5" 
         env:
           SECRET_KEY: ${{ secrets.ZIP_GENERATOR_ACTION }}          
