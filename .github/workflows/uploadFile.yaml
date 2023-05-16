@@ -32,9 +32,9 @@ jobs:
           token: ${{ secrets.ZIP_GENERATOR_ACTION }}
           path: Fiserv/tenants-data/assets
 
-      - name: Copy zip file to destination repo
-        run: |
-          cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets
+#       - name: Copy zip file to destination repo
+#         run: |
+#           cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets
 
       - name: Commit and push changes
         run: |
