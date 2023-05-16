@@ -102,10 +102,10 @@ const main = async() => {
         printMessage(`External Dir ---->>> ${folder}`); 
       }
     }else{
-      errorMessage('YAML VALIDATOR'  ,'No Path for reference dir. defined');
+      errorMessage('Tenant Config VALIDATOR'  ,'No Path for reference dir. defined');
     }
   } catch (e) {
-    errorMessage('YAML VALIDATOR'  ,e.message);
+    errorMessage('Tenant Config VALIDATOR'  ,e.message);
   }
 
 };
