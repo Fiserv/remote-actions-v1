@@ -107,6 +107,8 @@ jobs:
           path: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
 
       - name: Checkout destination repository
+        env:
+          SECRET_KEY: ${{ secrets.ACTION_SECRET }}
         uses: actions/checkout@v3
         with:
           repository: 'Fiserv/tenants-data'
