@@ -5,61 +5,40 @@ on:
   workflow_dispatch:
  
 jobs:
-  copy-zip:
+  copy-files:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source repo
+
+      - name: Checkout source repository
         uses: actions/checkout@v2
         with:
           repository: 'Fiserv/remote-actions-v1'
-          ref: develop
-      - name: Copy zip file
+          ref: 'develop'
+
+      - name: Copy files to destination repository
+        uses: actions/upload-artifact@v2
+        with:
+          name: files
+          path: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
+
+      - name: Checkout destination repository
+        uses: actions/checkout@v2
+        with:
+          repository: 'Fiserv/tenants-data'
+          token: ${{ secrets.ZIP_GENERATOR_ACTION }}          
+          ref: 'develop'
+
+      - name: Download files from source repository
+        uses: actions/download-artifact@v2
+        with:
+          name: files
+
+      - name: Commit changes
         run: |
-          cp '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'  'Fiserv/tenants-data/assets'
-          git config --global user.name "asingh2023"
           git config --global user.email "abhishek.singh3@fiserv.com"
+          git config --global user.name "asingh2023"
           git add .
-          git commit -m "Copy zip file from {source_repo} to {destination_repo}"
+          git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
           git push -u ${{ secrets.SECRET_KEY }}
         env:
-          SECRET_KEY: ${{ secrets.ACTION_SECRET }} 
-
-
-# jobs:
-#   copy-files:
-#     runs-on: ubuntu-latest
-#     steps:
-
-#       - name: Checkout source repository
-#         uses: actions/checkout@v2
-#         with:
-#           repository: 'Fiserv/remote-actions-v1'
-#           ref: 'develop'
-
-#       - name: Copy files to destination repository
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: files
-#           path: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
-
-#       - name: Checkout destination repository
-#         uses: actions/checkout@v2
-#         with:
-#           repository: 'Fiserv/tenants-data'
-#           token: ${{ secrets.ZIP_GENERATOR_ACTION }}          
-#           ref: 'develop'
-
-#       - name: Download files from source repository
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: files
-
-#       - name: Commit changes
-#         run: |
-#           git config --global user.email "abhishek.singh3@fiserv.com"
-#           git config --global user.name "asingh2023"
-#           git add .
-#           git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
-#           git push -u ${{ secrets.SECRET_KEY }}
-#         env:
-#           SECRET_KEY: ${{ secrets.ACTION_SECRET }}          
+          SECRET_KEY: ${{ secrets.ACTION_SECRET }}          

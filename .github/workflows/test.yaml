@@ -10,19 +10,44 @@ jobs:
   copy-file:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout destination repo
+        uses: actions/checkout@v2
+        with:
+          repository: Fiserv/tenants-data
+          ref: develop
+          path: assets
 
-    - name: Pushing tenant postmant collection zip file remotely into teanants-data repository.
-      uses: nkoppel/push-files-to-another-repository@1.1.1
-      env:
-         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}     
-      with:
-        source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
-        destination-username: 'Fiserv'
-        destination-repository: 'tenants-data'
-        destination-directory: 'assets'
-        destination-branch: '${{ github.ref_name }}'
-        commit-email: 'abhishek.singh3@fiserv.com'
-        commit-username: 'asingh2023'
-        commit_message: 'pushing zip file remotely'
+      - name: Copy file to destination repo
+        run: |
+          cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets
+        shell: bash
+
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Abhishek Singh
+          author_email: abhishek.singh3@fiserv.com
+          message: 'Copy file to destination repo'
+          path: Fiserv/tenants-data
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_SECRET }}
+# jobs:
+#   copy-file:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
+
+#     - name: Pushing tenant postmant collection zip file remotely into teanants-data repository.
+#       uses: nkoppel/push-files-to-another-repository@1.1.1
+#       env:
+#          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}     
+#       with:
+#         source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
+#         destination-username: 'Fiserv'
+#         destination-repository: 'tenants-data'
+#         destination-directory: 'assets'
+#         destination-branch: '${{ github.ref_name }}'
+#         commit-email: 'abhishek.singh3@fiserv.com'
+#         commit-username: 'asingh2023'
+#         commit_message: 'pushing zip file remotely'
