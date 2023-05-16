@@ -20,7 +20,7 @@ jobs:
           git config --global user.email "abhishek.singh3@fiserv.com"
           git add .
           git commit -m "Copy zip file from {source_repo} to {destination_repo}"
-          git push https://github.com/{destination_repo}.git HEAD:develop --force -u ${{ secrets.SECRET_KEY }}
+          git push https://github.com/Fiserv/tenants-data.git HEAD:develop --force -u ${{ secrets.SECRET_KEY }}
         env:
           SECRET_KEY: ${{ secrets.ACTION_SECRET }} 
 

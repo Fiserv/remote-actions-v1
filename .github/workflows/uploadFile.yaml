@@ -30,15 +30,15 @@ jobs:
         with:
           repository: 'Fiserv/tenants-data'
           token: ${{ secrets.ZIP_GENERATOR_ACTION }}
-          path: ./Fiserv/tenants-data/assets
+          path: Fiserv/tenants-data/assets
 
       - name: Copy zip file to destination repo
         run: |
-          cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip ./Fiserv/tenants-data/assets
+          cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip Fiserv/tenants-data/assets
 
       - name: Commit and push changes
         run: |
-          cd ./Fiserv/tenants-data
+          cd Fiserv/tenants-data
           git add .
           git commit -m "Copy zip file from ${{ github.event.repository.name }} to Fiserv/tenants-data"
           git push -u ${{ secrets.SECRET_KEY }}
