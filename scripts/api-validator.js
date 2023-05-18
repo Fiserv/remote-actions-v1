@@ -55,15 +55,26 @@ const parseAPIData = async (fileName , apiJson) => {
   let check = false;
   try{
     for (const [path, obj] of Object.entries(apiJson.paths)) {
+
       for (const [reqType, api] of Object.entries(obj)) {
-        if (typeof api !== 'object' || api === null) { continue; }
+
+        if (typeof api !== 'object' || api === null) { 
+          continue; 
+        }
+
           if( (api['x-group-name']) && api['x-proxy-name']){
+
             check = true;
+
           } else{ 
+
             if (!api.hasOwnProperty('x-proxy-name')){ 
+
               errorMessage('YAML VALIDATOR'  ,`File :${fileName} API-Path:${path} Error: Missing 'x-proxy-name'`);
+
             } 
             check = false;
+            
             return;
           }
       }

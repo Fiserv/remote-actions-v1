@@ -32,7 +32,7 @@
     link: docs/Getting-Started/Getting-Started-General.md
     sections: 
     - title: Developer Studio
-      link: docs/Getting-Started/Getting-Started-Dev-Portal.md
+      link: docs/Getting-Started/Getting-Started-Dev-Portal1.md
 - sections:
   - title: In-Person
     link: docs/Getting-Started/Getting-Started-InPerson.md
@@ -41,10 +41,6 @@
       link: docs/Resources/API-Documents/Use-Our-APIs.md
     - title: Encrypted Device
       link: docs/In-Person/Integrations/Encrypted-PIN-Pad.md
-#    - title: Fully-Integrated
-#      link: docs/In-Person/Integrations/Fully-Integrated.md
-#    - title: Semi-Integrated
-#      link: docs/In-Person/Integrations/Semi-Integrated.md
     - title: Debit
       link: docs/Resources/Guides/Debit/Debit.md
       sections:
@@ -54,8 +50,6 @@
         link: docs/Resources/Guides/Debit/Regional-Debit.md
     - title: Encrypted Payments
       sections:
-#      - title: Contactless (NFC)
-#        link: docs/In-Person/Encrypted-Payments/Contactless.md
       - title: EMV Chip
         link: docs/In-Person/Encrypted-Payments/EMV.md
       - title: Manual Entry
@@ -87,10 +81,6 @@
         link: docs/Online-Mobile-Digital/Wallets-AltPayments/Apple-Pay/Apple-Pay.md
       - title: Google Pay
         link: docs/Online-Mobile-Digital/Wallets-AltPayments/Google-Pay/Google-Pay.md
-#      - title: Samsung Pay
-#        link: docs/Online-Mobile-Digital/Wallets-AltPayments/Samsung-Pay/Samsung-Pay.md 
-#  - title: Connected Commerce
-#    link: docs/Getting-Started/Getting-Started-UCOM.md
 - sections:
   - title: Features
     sections:
@@ -104,8 +94,6 @@
       link: docs/Resources/API-Documents/DaaS/Data-Solutions.md
     - title: Directed Routing
       link: docs/Resources/Guides/Directed-Routing.md
-#    - title: Least Cost Debit
-#      link: docs/Resources/Guides/Debit/Least-Cost-Debit.md
     - title: Secure Data Capture
       link: docs/Online-Mobile-Digital/Secure-Data-Capture/Secure-Data-Capture.md
     - title: Tokenization
@@ -124,8 +112,6 @@
       link: docs/Resources/Guides/Dynamic-Descriptor.md
     - title: Fraud Controls
       link: docs/Resources/Guides/Fraud/Fraud-Settings.md
-#    - title: Level 2/3 Purchase Cards
-#      link: docs/Resources/Guides/Level23/Level23.md
     - title: Payment Sources
       link: docs/Resources/Guides/Payment-Sources/Source-Type.md
     - title: Response Handling
