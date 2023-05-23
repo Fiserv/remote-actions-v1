@@ -32,7 +32,7 @@
     link: docs/Getting-Started/Getting-Started-General.md
     sections: 
     - title: Developer Studio
-      link: docs/Getting-Started/Getting-Started-Dev-Portal1.md
+      link: docs/Getting-Started/Getting-Started-Dev-Portal.md
 - sections:
   - title: In-Person
     link: docs/Getting-Started/Getting-Started-InPerson.md
