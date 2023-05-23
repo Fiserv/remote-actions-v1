@@ -92,36 +92,36 @@ jobs:
       #     user_name: 'asingh2023'
       #     commit_message: 'pushing zip file remotely'
           
-      # - name: Commited changes from action runner to remote branch
-      #   uses: stefanzweifel/git-auto-commit-action@v4   
-      #   with: 
-      #     commit_message: Automatically commit changes
-          # branch: collection            
+      - name: Commited changes from action runner to remote branch
+        uses: stefanzweifel/git-auto-commit-action@v4   
+        with: 
+          commit_message: Automatically commit changes
+          branch: collection            
   
-      - name: Upload file as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: files
-          path: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
+      # - name: Upload file as artifact
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: files
+      #     path: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
 
-      - name: Checkout destination repository 
-        uses: actions/checkout@v3
-        with:
-          repository: 'Fiserv/tenants-data'
-          token: ${{ secrets.SECRET_KEY }}          
-          ref: ${{ github.ref_name }}
+      # - name: Checkout destination repository 
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: 'Fiserv/tenants-data'
+      #     token: ${{ secrets.SECRET_KEY }}          
+      #     ref: ${{ github.ref_name }}
 
-      - name: Download files from source repository
-        uses: actions/download-artifact@v3
-        with:
-          name: files
+      # - name: Download files from source repository
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: files
 
-      - name: Commit changes
-        run: |
-          git config --global user.email "abhishek.singh3@fiserv.com"
-          git config --global user.name "asingh2023"
-          git add .
-          git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
-          git push -u ${{ secrets.SECRET_KEY }}
-        env:
-          SECRET_KEY: ${{ secrets.ACTION_SECRET }}
+      # - name: Commit changes
+      #   run: |
+      #     git config --global user.email "abhishek.singh3@fiserv.com"
+      #     git config --global user.name "asingh2023"
+      #     git add .
+      #     git diff-index --quiet HEAD || git commit --message "Test copying file to source repository"
+      #     git push -u ${{ secrets.SECRET_KEY }}
+      #   env:
+      #     SECRET_KEY: ${{ secrets.ACTION_SECRET }}
