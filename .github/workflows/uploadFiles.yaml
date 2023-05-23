@@ -40,7 +40,7 @@ jobs:
           pwd
           cd ${{ github.workspace }}
           ls -la
-          cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip ${{github.workspace}}/tenants-data/assets/
+          cp ${{github.workspace}}/${{ github.event.repository.name }}_postman.zip ${{github.workspace}}/tenants-data/assets/
         env:
           SECRET_KEY: ${{ secrets.ACTION_SECRET }}  
 
