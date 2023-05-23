@@ -37,7 +37,7 @@ jobs:
 
       - name: Copy zip file to asset folder in tenants-data repo
         run: |
-          cp ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip ${{github.workspace}}/tenants-data/assets/
+          cp ${{github.workspace}}/tenants-data/assets/ ${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip
         env:
           SECRET_KEY: ${{ secrets.ACTION_SECRET }}  
 
