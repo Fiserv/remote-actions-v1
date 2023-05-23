@@ -53,9 +53,9 @@ const postmanZipFile = args[0]?.includes("/") ? args[0].split('/').pop()+'_postm
               printMessage(`Sub Dir accessed ---${dir}`);  
               printMessage(`Tenant files  :${tenant_repo}`);
              
-              if (await generateSpecZipCollection(tenant_repo ,  file , content )){
-                printMessage(`Spec File : ${file.name} added to Zip`);
-              }
+              // if (await generateSpecZipCollection(tenant_repo ,  file , content )){
+              //   printMessage(`Spec File : ${file.name} added to Zip`);
+              // }
        
               const postmanFileName = file.name.includes('.yaml') ? file?.name.split('.yaml')[0].concat('-postman.json') : `${file.name}-postman.json`;
               if (await generatePostmanCollection(tenant_repo , postmanFileName , content )){
