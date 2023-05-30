@@ -12,8 +12,8 @@ on:
 jobs:
   ZIP-Generator-Actions:
     runs-on: ubuntu-latest
-    env:
-      SECRET_KEY: ${{ secrets.ACTION_SECRET }}    
+    # env:
+    #   SECRET_KEY: ${{ secrets.ACTION_SECRET }}    
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -92,7 +92,7 @@ jobs:
       - name: Pushing tenant doc file remotely into teanants-data repository.
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.API_KEY_GITHUB }}
+          API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
         with:
           #source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
           source_file: '${{github.workspace}}/config/tenant.json'
