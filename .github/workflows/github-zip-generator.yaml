@@ -80,34 +80,25 @@ jobs:
           pwd
           ls -la
           
-      - name: Commited changes from action runner to remote branch
-        uses: stefanzweifel/git-auto-commit-action@v4   
-        with: 
-          commit_message: Automatically commit changes
+      # - name: Commited changes from action runner to remote branch
+      #   uses: stefanzweifel/git-auto-commit-action@v4   
+      #   with: 
+      #     commit_message: Automatically commit changes
           #branch: collection      
+ 
 
-      - name: Upload Files
-        uses: X31/action-upload-artifact@master
+      - name: Pushing tenant doc file remotely into teanants-data repository.
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACTION_SECRET }}
         with:
-          GITHUB_OAUTH_TOKEN: ${{ secrets.ACTION_SECRET }}
-          REMOTE_REPO_OWNER: 'Fiserv'
-          REMOTE_REPO_NAME: 'tenants-data'
-          BRANCH: develop
-          LOCAL_FILE_PATH: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
-          REMOTE_PATH: assets
-
-      # - name: Pushing tenant doc file remotely into teanants-data repository.
-      #   uses: dmnemec/copy_file_to_another_repo_action@main
-      #   env:
-      #     API_TOKEN_GITHUB: ${{ secrets.ACTION_SECRET }}
-      #   with:
-      #     source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
-      #     destination_repo: 'Fiserv/tenants-data'
-      #     destination_folder: 'assets'
-      #     destination_branch: '${{ github.ref_name }}'        
-      #     user_email: 'abhishek.singh3@fiserv.com'
-      #     user_name: 'asingh2023'
-      #     commit_message: 'pushing zip file remotely'                
+          source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
+          destination_repo: 'Fiserv/tenants-data'
+          destination_folder: 'assets'
+          destination_branch: '${{ github.ref_name }}'        
+          user_email: 'abhishek.singh3@fiserv.com'
+          user_name: 'asingh2023'
+          commit_message: 'pushing zip file remotely'                
   
       # - name: Upload file as artifact
       #   uses: actions/upload-artifact@v2
