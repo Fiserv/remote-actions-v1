@@ -92,7 +92,7 @@ jobs:
       - name: Pushing tenant doc file remotely into teanants-data repository.
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.ACTION_SECRET }}
+          API_TOKEN_GITHUB: ${{ secrets.API_KEY_GITHUB }}
         with:
           #source_file: '${{github.workspace}}/assets/${{ github.event.repository.name }}_postman.zip'
           source_file: '${{github.workspace}}/config/tenant.json'
