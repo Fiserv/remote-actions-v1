@@ -26,10 +26,12 @@ jobs:
         run: npm list
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          pwd
+          cd ${{ github.workspace }}/tools/scripts
+          pwd
+          npm install
 
       - name: Build
-        run: npm run build
-
-      - name: Test
-        run: npm test
+        run: npm run validate ${{github.workspace }}
+ 
