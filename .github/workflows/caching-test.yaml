@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           pwd
-          cd ${{ github.workspace }}/tools/scripts
+          cd ${{ github.workspace }}/scripts
           pwd
           npm install
 
