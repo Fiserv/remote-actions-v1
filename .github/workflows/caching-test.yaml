@@ -33,5 +33,10 @@ jobs:
           npm install
 
       - name: Build
-        run: npm run validate ${{github.workspace }}
+        run: |
+          pwd
+          cd ${{ github.workspace }}/scripts
+          pwd
+          npm run validate ${{github.workspace }}     
+        
  
