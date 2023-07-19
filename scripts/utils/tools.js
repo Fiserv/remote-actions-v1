@@ -46,7 +46,31 @@ const provideReferenceFolder = (path) => {
     return folder;
   } 
   return folder;
-}
+};
+
+
+const isDocOnlyTenant = async (dir) => { 
+  const files = await fs.promises.readdir(dir, { withFileTypes: true });
+  let check = false; 
+  for (const file of files) {   
+    if (file?.name === 'tenant.json'){
+      try{ 
+       
+        const fileName = `${dir}/${file.name}`;
+        const content = await fs.promises.readFile(fileName, 'utf8'); 
+        const tenantData = JSON.parse(content);   
+        if (tenantData?.apiVersions && tenantData?.apiVersions.length > 0){
+          return true;
+        } 
+      }catch (e){
+        errorMessage(YAML_VALIDATOR  ,e?.message);
+        check = false;
+      }  
+    }   
+  };
+  return check;
+};
+
 
 module.exports = {
   processArgs,
@@ -55,4 +79,5 @@ module.exports = {
   printMessage,
   provideReferenceFolder,
   warningMsg,
+  isDocOnlyTenant,
 };

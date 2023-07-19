@@ -7,11 +7,12 @@ const AdmZip = require('adm-zip');
 const postmanConverter = require('openapi-to-postmanv2');
 const args = process.argv.slice(2);
 const folder = args?.[0];
-const { errorMessage, warningMsg , printMessage , provideReferenceFolder} = require('./utils/tools');
+const { errorMessage, warningMsg , printMessage , provideReferenceFolder , isDocOnlyTenant} = require('./utils/tools');
 const postman_zip  = new AdmZip() , spec_zip = new AdmZip();
 const specZipFile = args[0]?.includes("/") ? args[0].split('/').pop()+'_spec' : 'tennat_spec';
 const postmanZipFile = args[0]?.includes("/") ? args[0].split('/').pop()+'_postman' : 'tennat_postman';
 const Zip_Generator = 'ZIP GENERATOR';
+const { exit } = require('process');
 
 const validateDir = async (dir) => { 
 
@@ -29,6 +30,7 @@ const validateDir = async (dir) => {
             const content = await fs.promises.readFile(fileName, {encoding: 'UTF8'}); 
             const data = JSON.parse(content); 
             check = await validateSpecExistence(args?.[0] , data); 
+            console.log(check );
           }catch (e){
             errorMessage(Zip_Generator  ,e?.message);
             check = false;
@@ -247,11 +249,14 @@ const validateDir = async (dir) => {
       try {
         printMessage(`External Dir ---->>> ${args}`);
         if (args?.length > 0) { 
-        await validateDir(folder+"/config"); 
-        //  console.log("----------------------------------------------------------------");
-        //  const refFolder = provideReferenceFolder(folder); 
-        //  console.log(`refFolder :${refFolder}`);
-        //  await generateZipCollection(refFolder);
+        const path = folder+"/config"
+        const check = await isDocOnlyTenant(path); 
+        if (check){ 
+          await validateDir(path); 
+        } else{
+          printMessage(`SKIPPED`);
+          exit(0)
+        }
         } else {
           errorMessage(Zip_Generator, 'No Path for reference dir. defined');
         }

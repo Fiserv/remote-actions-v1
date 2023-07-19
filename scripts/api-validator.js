@@ -7,14 +7,13 @@ const args = process.argv.slice(2);
 const folder = args?.[0]; 
 const YAML_VALIDATOR = 'YAML VALIDATOR';
 const showdown = require('showdown');
-const {errorMsg,errorMessage  , printMessage , provideReferenceFolder } = require('./utils/tools');
+const {errorMsg,errorMessage  , printMessage , provideReferenceFolder , isDocOnlyTenant } = require('./utils/tools');
 const { enrichHTMLFromMarkup, showdownHighlight } = require('./utils/md-utils'); 
 const { exit } = require('process');
  
 const validateDir = async (dir) => { 
   
-  let check = false;
-  
+  let check = false; 
   fs.readdir(dir, { withFileTypes: true }, (err, files) => {
     files?.forEach(async file => {
 
@@ -144,29 +143,6 @@ const validateIndexBody = (fileName , yamlData ,yamlJSONData ,path , reqType , a
     errorMessage(YAML_VALIDATOR ,`File :${fileName} with ${e?.message}`);
     check = false;
   }   
-  return check;
-};
-
-const isDocOnlyTenant = async (dir) => {
-
-  const files = await fs.promises.readdir(dir, { withFileTypes: true });
-  let check = false; 
-  for (const file of files) {   
-    if (file?.name === 'tenant.json'){
-      try{ 
-       
-        const fileName = `${dir}/${file.name}`;
-        const content = await fs.promises.readFile(fileName, 'utf8'); 
-        const tenantData = JSON.parse(content);   
-        if (tenantData?.apiVersions && tenantData?.apiVersions.length > 0){
-          return true;
-        } 
-      }catch (e){
-        errorMessage(YAML_VALIDATOR  ,e?.message);
-        check = false;
-      }  
-    }   
-  };
   return check;
 };
 
