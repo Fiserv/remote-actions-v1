@@ -91,6 +91,9 @@ jobs:
           if [[ $result == *'VALIDATOR FAILED'* ]] ;then
           echo "Validator failed and exiting the Job..."
           exit 1
+          elif [[ $result == *'SKIPPED'* ]] ;then
+          echo "Validator JOB IS SKIPPED"  
+          exit 0        
           elif [[ $result == *'PASSED'* ]] ;then
           echo "Validator Ran Successfully....🍏"
           fi

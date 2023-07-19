@@ -182,7 +182,7 @@ const main = async() => {
         const refFolder = provideReferenceFolder(folder); 
         await validateDir(refFolder);
       } else{
-        //printMessage(`Tenant is doc Only no API(s) to validated : PASSED`);
+        printMessage(`SKIPPED`);
         exit(0)
       }
    }else{
