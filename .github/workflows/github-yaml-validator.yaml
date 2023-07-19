@@ -94,7 +94,8 @@ jobs:
           echo "Validator failed and exiting the Job..."
           exit 1
           elif [[ $result == *'SKIPPED'* ]] ;then
-          echo "Validator JOB IS SKIPPED"  
+          echo "Validator JOB IS SKIPPED" 
+          cd ${{ github.workspace }} 
           gh run cancel ${{ github.run_id }} 
           gh run watch ${{ github.run_id }}       
           elif [[ $result == *'PASSED'* ]] ;then
