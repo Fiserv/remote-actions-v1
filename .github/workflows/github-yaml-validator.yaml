@@ -100,7 +100,7 @@ jobs:
           echo "Validator Ran Successfully....🍏"
           fi
         env:
-          API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }          
+          API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}          
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Show file content
         run: |
