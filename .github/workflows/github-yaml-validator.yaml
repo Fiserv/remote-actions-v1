@@ -94,11 +94,11 @@ jobs:
           echo "Validator failed and exiting the Job..."
           exit 1
           elif [[ $result == *'SKIPPED'* ]] ;then
-          echo "Validator JOB IS SKIPPED" 
-          elif [[ $result == *'PASSED'* ]] ;then
-          echo "Validator Ran Successfully....🍏"
+          echo "Validator JOB IS SKIPPED"
           echo "TENANT="$result >> $GITHUB_OUTPUT  
-          echo "${{ steps.build.outputs.TENANT }}"         
+          echo "${{ steps.build.outputs.TENANT }}"  
+          elif [[ $result == *'PASSED'* ]] ;then
+          echo "Validator Ran Successfully....🍏" 
           fi
         env:
           GH_TOKEN: ${{ secrets.ZIP_GENERATOR_ACTION }}          
