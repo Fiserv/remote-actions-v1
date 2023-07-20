@@ -150,7 +150,7 @@ const validateIndexBody = (fileName , yamlData ,yamlJSONData ,path , reqType , a
 const main = async() => {
 
   try {
-    printMessage(`External Dir ---->>> ${folder}`);   
+    //printMessage(`External Dir ---->>> ${folder}`);   
     if ( args?.length > 0){  
       // Check for API version in tenant configuration file
       const check = await isDocOnlyTenant(folder+"/config"); 
