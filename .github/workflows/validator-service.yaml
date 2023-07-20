@@ -11,9 +11,7 @@ on:
     branches: [ develop,stage,main ]   
    
 jobs:     
-  api-validator: 
-    outputs:
-      output1: ${{ steps.apivalidate.outputs.JobStatus }}  
+  api-validator:  
     uses: ./.github/workflows/github-yaml-validator.yaml
     if: ${{ ((github.ref == 'refs/heads/develop') || (github.ref == 'refs/heads/stage') || (github.ref == 'refs/heads/main')) }}
     secrets: inherit      
