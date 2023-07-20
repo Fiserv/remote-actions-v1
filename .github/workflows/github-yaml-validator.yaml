@@ -6,7 +6,7 @@ on:
     outputs:
       jbstatus:
         description: "The first output string"
-        value: ${{ steps.apivalidate.outputs.JobStatus }}
+        value: ${{ jobs.API-Validator-Actions.outputs.output1 }}
   #Triggers the workflow on push or pull request events but only for the dev , stage and main branch
   push:
     branches: [ develop,stage,main ]
@@ -23,6 +23,8 @@ jobs:
   API-Validator-Actions:
     runs-on: ubuntu-latest
     timeout-minutes: 15   
+    outputs:
+      output1: ${{ steps.apivalidate.outputs.JobStatus }}    
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
