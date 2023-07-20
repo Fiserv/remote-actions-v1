@@ -90,7 +90,7 @@ jobs:
           exit 1
           elif [[ $result == *'SKIPPED'* ]] ;then
           echo "Validator JOB IS SKIPPED" 
-          echo "JOBSTATUS="SKIPPED >> $GITHUB_OUTPUT             
+          echo "JOBSTATUS="$result >> $GITHUB_OUTPUT             
           elif [[ $result == *'PASSED'* ]] ;then
           echo "Validator Ran Successfully....🍏"
           fi
