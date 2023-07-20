@@ -97,7 +97,8 @@ jobs:
           elif [[ $result == *'PASSED'* ]] ;then
           echo "Validator Ran Successfully....🍏" 
           elif [[ $result == *'SKIPPED'* ]] ;then
-          echo "Validator JOB IS SKIPPED"         
+          echo "Validator JOB IS SKIPPED"
+          echo "JobStatus="$result >> $GITHUB_OUTPUT                    
           fi
         env:
           GH_TOKEN: ${{ secrets.ZIP_GENERATOR_ACTION }}          
@@ -105,8 +106,7 @@ jobs:
       - name: Show file content
         run: |
           pwd
-          ls -la
-          echo "TENANT="$result >> $GITHUB_OUTPUT  
-          echo "${{ steps.validator.outputs.TENANT }}"  
+          ls -la 
+          echo "${{ steps.validator.outputs.JobStatus }}"  
       # - name: Commited changes from action runner to remote branch
       #   uses: stefanzweifel/git-auto-commit-action@v4
