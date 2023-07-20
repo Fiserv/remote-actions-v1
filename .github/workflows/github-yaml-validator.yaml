@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
   workflow_call:
     outputs:
-      jbstatus:
+      firstword:
         description: "The first output string"
-        value: ${{ jobs.API-Validator-Actions.outputs.output1 }}
+        value: ${{ jobs.api_validator_actions.outputs.output1 }}
   #Triggers the workflow on push or pull request events but only for the dev , stage and main branch
   push:
     branches: [ develop,stage,main ]
@@ -20,7 +20,7 @@ on:
       
       
 jobs:
-  API-Validator-Actions:
+  api_validator_actions:
     runs-on: ubuntu-latest
     timeout-minutes: 15   
     outputs:
