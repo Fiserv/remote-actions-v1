@@ -104,7 +104,7 @@ jobs:
           ls -la 
 
       - name: Pushing postman.zip file remotely into tenants-data repository.
-        if: ${{ steps.zipper.outputs.jobStatus != *SKIPPED* }}
+        if: ${{ steps.zipper.outputs.jobStatus != '*SKIPPED*' }}
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.ZIP_GENERATOR_ACTION }}
