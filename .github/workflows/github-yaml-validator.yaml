@@ -97,6 +97,7 @@ jobs:
           echo "Validator JOB IS SKIPPED" 
           elif [[ $result == *'PASSED'* ]] ;then
           echo "Validator Ran Successfully....🍏"
+          echo "TENANT="$result >> $GITHUB_OUTPUT  
           fi
         env:
           GH_TOKEN: ${{ secrets.ZIP_GENERATOR_ACTION }}          
@@ -105,5 +106,6 @@ jobs:
         run: |
           pwd
           ls -la
+          echo "${{steps.build.outputs.TENANT}}"
       # - name: Commited changes from action runner to remote branch
       #   uses: stefanzweifel/git-auto-commit-action@v4
