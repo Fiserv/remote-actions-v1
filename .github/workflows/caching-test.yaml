@@ -1,3 +1,5 @@
+name: Caching with npm
+on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -15,3 +17,6 @@ jobs:
     needs: job1
     steps:
     - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+   
+        
+ 
