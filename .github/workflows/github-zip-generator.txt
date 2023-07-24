@@ -113,7 +113,7 @@ jobs:
       #     destination_repo: 'Fiserv/tenants-data'
       #     destination_folder: 'assets'
       #     destination_branch: '${{ github.ref_name }}'        
-      #     user_email: 'abhishek.singh3@fiserv.com'
+      #     user_email: ''
       #     user_name: 'asingh2023'
       #     commit_message: 'pushing zip file remotely'
 
@@ -127,7 +127,7 @@ jobs:
       #     destination_repo: 'Fiserv/tenants-data'
       #     destination_folder: 'assets'
       #     destination_branch: '${{ github.ref_name }}'        
-      #     user_email: 'abhishek.singh3@fiserv.com'
+      #     user_email: ''
       #     user_name: 'asingh2023'
       #     commit_message: 'pushing zip file remotely' 
         
